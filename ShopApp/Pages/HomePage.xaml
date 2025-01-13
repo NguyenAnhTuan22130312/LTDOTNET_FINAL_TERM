@@ -1,0 +1,104 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopApp.Pages.HomePage"
+             Title="Home"
+             BackgroundColor="#F4F4F9"> <!-- Màu nền trang nhẹ nhàng -->
+
+    <ScrollView>
+        <StackLayout Padding="10" Spacing="20">
+
+            <!-- Tiêu đề -->
+            <Label Text="Nông Lâm Restaurant" 
+                   FontSize="40" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="#b5292f" />
+
+            <!-- Thanh tìm kiếm và menu -->
+<StackLayout Grid.Row="0" Padding="10" BackgroundColor="#F5F5F5">
+    <!-- Thanh tìm kiếm -->
+    <StackLayout Orientation="Horizontal" Margin="0,10,0,10">
+        <Frame Padding="0" CornerRadius="10" BackgroundColor="White" HasShadow="False" HorizontalOptions="FillAndExpand">
+            <Entry Placeholder="Tìm kiếm món ăn..." BackgroundColor="Transparent" TextChanged="OnSearchBarTextChanged"/>
+        </Frame>
+    </StackLayout>
+
+    <!-- Thanh menu tùy chọn -->
+    <ScrollView Orientation="Horizontal" Margin="0,10,0,10">
+        <StackLayout Orientation="Horizontal" Spacing="15">
+            <Frame Padding="0" CornerRadius="10" BackgroundColor="White" HasShadow="False">
+                <Button Text="Tất Cả" TextColor="white" BackgroundColor="#b5292f" Clicked="OnShowAllClicked"/>
+            </Frame>
+            <Frame Padding="0" CornerRadius="10" BackgroundColor="White" HasShadow="False">
+                <Button Text="Món Cơm" TextColor="white" BackgroundColor="#b5292f" Clicked="OnCategorySelected" CommandParameter="1"/>
+            </Frame>
+            <Frame Padding="0" CornerRadius="10" BackgroundColor="White" HasShadow="False">
+                <Button Text="Món Bún" TextColor="white" BackgroundColor="#b5292f" Clicked="OnCategorySelected" CommandParameter="2"/>
+            </Frame>
+            <Frame Padding="0" CornerRadius="10" BackgroundColor="White" HasShadow="False">
+                <Button Text="Món Phở" TextColor="white" BackgroundColor="#b5292f" Clicked="OnCategorySelected" CommandParameter="3"/>
+            </Frame>
+            <Frame Padding="0" CornerRadius="10" BackgroundColor="White" HasShadow="False">
+                <Button Text="Món Nước" TextColor="white" BackgroundColor="#b5292f" Clicked="OnCategorySelected" CommandParameter="4"/>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</StackLayout>
+        
+
+            <!-- Khu vực sản phẩm -->
+            <Label Text="Sản phẩm của chúng tôi" 
+                   FontSize="22" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Start" 
+                   TextColor="#2E3A59" />
+
+            <!-- CollectionView hiển thị sản phẩm -->
+            <CollectionView ItemsSource="{Binding Products}" 
+                SelectionMode="Single" 
+                SelectionChanged="OnProductSelected">
+    
+    <CollectionView.ItemsLayout>
+        <GridItemsLayout Orientation="Vertical"
+                         Span="2"
+                         HorizontalItemSpacing="15" 
+                         VerticalItemSpacing="15" /> 
+    </CollectionView.ItemsLayout>
+    
+    <CollectionView.ItemTemplate>
+        <DataTemplate>
+            <Frame Padding="10"
+                   CornerRadius="15" 
+                   BorderColor="#e0e0e0" 
+                   HasShadow="False" 
+                   BackgroundColor="White">
+                <StackLayout Spacing="15"> <!-- Tăng spacing để tạo khoảng cách giữa các thành phần -->
+                    <!-- Hình ảnh sản phẩm -->
+                    <Image Source="{Binding Img}" 
+                           HeightRequest="150" 
+                           Aspect="AspectFill"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" />
+
+                    <!-- Tên sản phẩm -->
+                    <Label Text="{Binding FoodName}" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           HorizontalOptions="Center"
+                           TextColor="#2E3A59" 
+                           LineBreakMode="TailTruncation" />
+
+                    <!-- Giá sản phẩm -->
+                    <Label Text="{Binding Price, StringFormat='{}{0:C}'}" 
+                           FontSize="16" 
+                           TextColor="#b5292f" 
+                           HorizontalOptions="Center" 
+                           FontAttributes="Bold" />
+                </StackLayout>
+            </Frame>
+        </DataTemplate>
+    </CollectionView.ItemTemplate>
+</CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

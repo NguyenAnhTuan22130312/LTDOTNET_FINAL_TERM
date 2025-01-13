@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopApp.MainPage">
+
+    <CollectionView ItemsSource="{Binding Products}" >
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout Padding="10" Orientation="Horizontal">
+                    <Image Source="{Binding ImageUrl}" HeightRequest="60" WidthRequest="60"/>
+                    <StackLayout Padding="5">
+                        <Label Text="{Binding Name}" FontSize="16"/>
+                        <Label Text="{Binding Price, StringFormat='{0:C}'}"/>
+                        <Label Text="{Binding Category.Name}" FontSize="14" TextColor="Gray"/>
+                    </StackLayout>
+                    <Button Text="Thêm giỏ"  Command="{Binding BindingContext.AddToCartCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" CommandParameter="{Binding .}"  />
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView> 
+
+</ContentPage>

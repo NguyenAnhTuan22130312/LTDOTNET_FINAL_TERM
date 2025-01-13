@@ -1,0 +1,49 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ShopApp.Pages.FoodDetailPage"
+             Title="Chi Tiết Món Ăn">
+    <ScrollView Padding="20">
+        <StackLayout Spacing="20">
+            <!-- Hình ảnh sản phẩm -->
+            <Image Source="{Binding Food.Img}" HeightRequest="250" Aspect="AspectFill" HorizontalOptions="Center" />
+            
+            <!-- Tên sản phẩm -->
+            <Label Text="{Binding Food.FoodName}" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#333" />
+            
+            <!-- Mô tả sản phẩm -->
+            <Label Text="{Binding Food.Description}" FontSize="16" HorizontalOptions="Center" TextColor="#555" LineBreakMode="WordWrap" />
+
+            <!-- Giá sản phẩm -->
+            <Label Text="{Binding Food.Price}" FontSize="24" FontAttributes="Bold" TextColor="#b5292f" HorizontalOptions="Center" />
+
+            <!-- Nút thêm vào giỏ hàng -->
+            <Button Text="Thêm vào giỏ hàng" BackgroundColor="#b5292f" TextColor="White" Padding="10, 15" CornerRadius="30" HorizontalOptions="FillAndExpand" VerticalOptions="End" 
+                    Command="{Binding AddToCartCommand}"/>
+
+        <CollectionView ItemsSource="{Binding Reviews}">
+            <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5" BorderColor="#ddd" CornerRadius="10">
+                        <StackLayout>
+                            <Label Text="{Binding UserName}" FontSize="20" FontAttributes="Bold" TextColor="black" />
+                            <Label Text="{Binding Comment}" FontSize="18" FontAttributes="Bold" TextColor="#666" />
+                            <Label FontSize="18" TextColor="#777">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding Rating}" />
+                                <Span Text=" ★" TextColor="#f1c40f" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                        </Label>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

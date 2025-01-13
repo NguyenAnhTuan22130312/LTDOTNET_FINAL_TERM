@@ -1,0 +1,7 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopApp.Pages.DetailOrder"
+             Title="Chi Tiết Đơn Hàng"
+             BackgroundColor="#F5F5F5">
+    
+</ContentPage>

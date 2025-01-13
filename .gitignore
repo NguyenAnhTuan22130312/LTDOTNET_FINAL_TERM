@@ -1,0 +1,26 @@
+# .NET Core
+.vs/
+.vscode/
+.idea/
+bin/
+obj/
+out/
+packages/
+
+# MAUI-specific
+.android/
+.ios/
+.macos/
+.win/
+
+# Ignore all files by default
+*
+
+# Except these specific files/folders
+!.gitignore
+!**/*.xaml
+!**/*.xaml.cs
+!**/*.cs
+!**/Models/
+!**/Services/
+

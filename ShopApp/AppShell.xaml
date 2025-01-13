@@ -1,0 +1,58 @@
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:ShopApp.Pages"
+       x:Class="ShopApp.AppShell">
+
+    <!-- Tiêu đề ứng dụng -->
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="#b5292f" Padding="15">
+            <Label Text="FoodShop"
+                   FontSize="24"
+                   TextColor="White"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <!-- Behavior: Phân biệt giữa Windows và Android -->
+    <Shell.FlyoutBehavior>
+        <OnPlatform x:TypeArguments="FlyoutBehavior">
+            <On Platform="Android" Value="Disabled" />
+            <On Platform="Windows" Value="Split" />
+            <On Platform="iOS" Value="Disabled" />
+        </OnPlatform>
+    </Shell.FlyoutBehavior>
+
+    <!-- FlyoutItem cho Windows -->
+   <FlyoutItem Title="Trang chủ" Icon="icon_home.png" IsVisible="{OnPlatform Android=false,iOS=false}">
+       <ShellContent ContentTemplate="{DataTemplate local:HomePage}" />
+   </FlyoutItem>
+   <FlyoutItem Title="Đơn hàng" Icon="icon_orders.png" IsVisible="{OnPlatform Android=false,iOS=false}">
+       <ShellContent ContentTemplate="{DataTemplate local:OrdersPage}" />
+   </FlyoutItem>
+   <FlyoutItem Title="Giỏ hàng" Icon="icon_cart.png" IsVisible="{OnPlatform Android=false,iOS=false}">
+       <ShellContent ContentTemplate="{DataTemplate local:CartPage}" />
+   </FlyoutItem>
+   <FlyoutItem Title="Tài khoản"  Icon="icon_user.png" IsVisible="{OnPlatform Android=false,iOS=false}">
+       <ShellContent ContentTemplate="{DataTemplate local:AccountPage}" />
+   </FlyoutItem>
+
+   
+
+    <!-- TabBar chỉ hiển thị trên Android -->
+    <TabBar>
+        <Tab Title="Trang chủ" Icon="icon_home.png">
+            <ShellContent ContentTemplate="{DataTemplate local:HomePage}" />
+        </Tab>
+        <Tab Title="Đơn hàng" Icon="icon_orders.png">
+            <ShellContent ContentTemplate="{DataTemplate local:OrdersPage}" />
+        </Tab>
+        <Tab Title="Giỏ hàng" Icon="icon_cart.png">
+            <ShellContent ContentTemplate="{DataTemplate local:CartPage}" />
+        </Tab>
+        <Tab Title="Tài khoản" Icon="icon_user.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AccountPage}" />
+        </Tab>
+    </TabBar>
+    
+</Shell>
